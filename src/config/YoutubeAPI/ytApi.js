@@ -46,13 +46,23 @@ const detailsVideo = async ({ part, id }) => {
 };
 
 const playlist = async ({ part, channelId, pageToken }) => {
-	const response = await axios.get(ytConfig.getUrl('playlists', { part, channelId, pageToken }));
-	return response;
+	if (pageToken !== undefined && pageToken !== '') {
+		const response = await axios.get(ytConfig.getUrl('playlists', { part, channelId, pageToken }));
+		return response;
+	} else {
+		const response = await axios.get(ytConfig.getUrl('playlists', { part, channelId }));
+		return response;
+	}
 };
 
 const playlistItems = async ({ part, playlistId, pageToken }) => {
-	const response = await axios.get(ytConfig.getUrl('playlistItems', { part, playlistId, pageToken }));
-	return response;
+	if (pageToken !== undefined && pageToken !== '') {
+		const response = await axios.get(ytConfig.getUrl('playlistItems', { part, playlistId, pageToken }));
+		return response;
+	} else {
+		const response = await axios.get(ytConfig.getUrl('playlistItems', { part, playlistId }));
+		return response;
+	}
 };
 
 const channelDetails = async ({ part, id }) => {
