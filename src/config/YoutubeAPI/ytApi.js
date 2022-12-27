@@ -45,13 +45,13 @@ const detailsVideo = async ({ part, id }) => {
 	return response;
 };
 
-const playlist = async ({ part, channelId }) => {
-	const response = await axios.get(ytConfig.getUrl('playlists', { part, channelId }));
+const playlist = async ({ part, channelId, pageToken }) => {
+	const response = await axios.get(ytConfig.getUrl('playlists', { part, channelId, pageToken }));
 	return response;
 };
 
-const playlistItems = async ({ part, playlistId }) => {
-	const response = await axios.get(ytConfig.getUrl('playlistItems', { part, playlistId }));
+const playlistItems = async ({ part, playlistId, pageToken }) => {
+	const response = await axios.get(ytConfig.getUrl('playlistItems', { part, playlistId, pageToken }));
 	return response;
 };
 
