@@ -57,10 +57,11 @@ const searchVideo = async (req, res) => {
 
 const getPlaylist = async (req, res) => {
 	try {
-		const { part, channelId } = req.query;
+		const { part, channelId, pageToken } = req.query;
 		const response = await ytApi.playlist({
 			part: part,
 			channelId: channelId,
+			pageToken: pageToken
 		});
 		return res.status(200).json(response);
 	} catch {
@@ -84,10 +85,11 @@ const getDetailsVideo = async (req, res) => {
 
 const getPlaylistItems = async (req, res) => {
 	try {
-		const { part, playlistId } = req.query;
+		const { part, playlistId, pageToken } = req.query;
 		const response = await ytApi.playlistItems({
 			part: part,
 			playlistId: playlistId,
+			pageToken: pageToken
 		});
 		return res.status(200).json(response);
 	} catch {
